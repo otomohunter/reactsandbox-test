@@ -1,4 +1,5 @@
-import { useState } from "react";
+/* eslint react-hooks/exhaustive-deps: off */
+import { useEffect, useState } from "react";
 import ColorfulMessage from "./components/ColorfulMessage";
 
 const App = () => {
@@ -11,6 +12,16 @@ const App = () => {
   const onClickSwitchShowFlg = () => {
     setFaceShowFlg(!faceShowFlg);
   };
+
+  useEffect(() => {
+    if (0 < num) {
+      if (num % 3 === 0) {
+        faceShowFlg || setFaceShowFlg(true);
+      } else {
+        faceShowFlg && setFaceShowFlg(false);
+      }
+    }
+  }, [num]);
 
   return (
     <>
